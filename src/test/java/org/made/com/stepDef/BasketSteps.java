@@ -1,6 +1,7 @@
 package org.made.com.stepDef;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -13,7 +14,7 @@ public class BasketSteps {
     Resultpage resultpage = new Resultpage();
     Basketpage basketpage = new Basketpage();
     DeliveryContactpage deliveryContactpage = new DeliveryContactpage();
-    Productdescpage productdescpage = new Productdescpage();
+    ProductDescPage productDescPage = new ProductDescPage();
 
     @Given("^I am on homepage$")
     public void iAmOnHomepage() {
@@ -37,6 +38,20 @@ public class BasketSteps {
 
     @When("^I select any product$")
     public void iSelectAnyProduct() {
+        resultpage.selectAnyProduct();
+    }
 
+    @And("^I go to basket$")
+    public void iGoToBasket() {
+        productDescPage.clickOnAddToBasket();
+    }
+
+    @Then("^I should see selected product in basket$")
+    public void iShouldSeeSelectedProductInBasket() {
+        String actual = basketpage.getProductName();
+        String expected = Resultpage.selectedProductName;
+
+        Assert.assertEquals(expected,actual);
+        Assert.assertTrue(actual.equalsIgnoreCase(expected));
     }
 }

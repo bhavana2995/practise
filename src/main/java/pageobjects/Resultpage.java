@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Resultpage extends DriverFactory {
+    public static String selectedProductName;
 
     public boolean isOnResutlsPage() {
         return driver.findElement(By.cssSelector("#narrow-by-list")).isDisplayed();
@@ -20,10 +21,11 @@ public class Resultpage extends DriverFactory {
         int numberOfProducts = productsNames.size();
         Random random = new Random();
         int randomNumber = random.nextInt(numberOfProducts);
+        selectedProductName = productsNames.get(randomNumber).getText();
+        productsNames.get(randomNumber).click();
 
-
-        String selectedProductName = productsNames.get(randomNumber).getText();
-
+        System.out.println("random number " + randomNumber);
+        System.out.println("Product selected is : " + selectedProductName);
 
     }
 
