@@ -8,6 +8,6 @@ import org.junit.runner.RunWith;
  *
  */
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources", dryRun = false)
+@CucumberOptions(features = "src/test/resources", dryRun = false, tags = "@basket")
 public class RunCukesTest {
 }
