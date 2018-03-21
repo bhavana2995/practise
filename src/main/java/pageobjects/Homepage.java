@@ -35,4 +35,11 @@ public class Homepage extends DriverFactory {
             }
         }
     }
+   public void searchForProduct(){
+        driver.findElement(By.id("search-input")).sendKeys("Double Beds");
+   }
+   public void clickOnSearchButton(){
+       driver.findElement(By.id("submit-search")).click();
+   }
+
 }

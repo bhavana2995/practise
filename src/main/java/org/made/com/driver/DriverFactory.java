@@ -1,7 +1,5 @@
 package org.made.com.driver;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
@@ -10,8 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.safari.SafariDriver;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class DriverFactory {
@@ -42,5 +40,17 @@ public class DriverFactory {
 
     public void closeBrowser() {
         driver.quit();
+    }
+
+    public void sleep(int timeInMs){
+        try {
+            Thread.sleep(timeInMs);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int randomNumber(int size){
+        return new Random().nextInt(size);
     }
 }
